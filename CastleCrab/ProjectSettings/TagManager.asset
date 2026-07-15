@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Defense Point
+  - Castle
   layers:
   - Default
   - TransparentFX
