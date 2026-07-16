@@ -1687,8 +1687,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6251ba516f2ff1f46b7bbb8ef4318180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
-  isWaveActive: 0
-  gameTime: 0
+  waveInterval: 60
+  waveDuration: 20
 --- !u!4 &1208387907
 Transform:
   m_ObjectHideFlags: 0
