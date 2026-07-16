@@ -13,7 +13,8 @@ public class WaveManager : MonoBehaviour
 
     public float waveTimer { get; private set; }
 
-    public float SpawnRate;
+    public float spawnRate = 7f;
+    private float spawnTimer = 0f;
     public List<GameObject> Spawners;
 
     private void Awake()
@@ -43,10 +44,15 @@ public class WaveManager : MonoBehaviour
             waveTimer = 0f;
         }
 
-
+        spawnTimer += Time.deltaTime;
+        if (spawnTimer >= spawnRate)
+        {
+            spawnTimer = 0f;
+            InitiateSpawn();
+        }
     }
 
-    private void Start()
+    private void InitiateSpawn()
     {
         GameObject chosenSpawner = Spawners[Random.Range(0, Spawners.Count)];
         chosenSpawner.GetComponent<Spawner>().SpawnEnemy();

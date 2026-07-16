@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291a5d2a4a025484da1867a0f01acf49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  moveSpeed: 0
+  moveSpeed: 0.2
   originalPrefab: {fileID: 7255446662867483032}
 --- !u!58 &7810141633026950373
 CircleCollider2D:
