@@ -44,3 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b06135b4a9eb2f42993e5d3f8036b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  checkpoints: []
+  specialEnemies:
+  - {fileID: 7255446662867483032, guid: 87080e3ceb5ed4a40910ce34f12b9fee, type: 3}
+  - {fileID: 7255446662867483032, guid: b198a09244ce00a44ab760f6e7221f0b, type: 3}
+  baseProbabilityCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  waveProbabilityCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  prefabBaseEnemy: {fileID: 7255446662867483032, guid: 25617eb93d41eea46a5269f2b9c0d94b, type: 3}
