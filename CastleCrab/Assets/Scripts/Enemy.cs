@@ -7,12 +7,14 @@ public class Enemy : MonoBehaviour
 {
     private List<Transform> route;
     private int currentCheckpointIndex;
-    public int moveSpeed;
+    public float moveSpeed = 0.8f;
 
     private int currentHealth;
     private int maxHealth;
 
     public GameObject originalPrefab;
+
+    private bool isDead = false;
 
     private void OnEnable()
     {
@@ -31,6 +33,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        isDead = true;
         StartCoroutine(DieRoutine());
     }
 
@@ -52,24 +55,26 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (route == null || route.Count == 0) return;
-
-        Transform target = route[currentCheckpointIndex];
-        transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (route == null || currentCheckpointIndex >= route.Count) return;
-
-        if (other.transform == route[currentCheckpointIndex])
+        if (!isDead)
         {
-            currentCheckpointIndex++;
-            if (currentCheckpointIndex >= route.Count)
+            if (route == null || route.Count == 0) return;
+
+            Transform target = route[currentCheckpointIndex];
+            transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, target.position) < 0.05f)
             {
-                Die();
-                // Fin du jeu
+                if (currentCheckpointIndex <= route.Count - 1)
+                {
+                    currentCheckpointIndex++;
+                }
+                if (currentCheckpointIndex >= route.Count)
+                {
+                    Die();
+                    // Fin du jeu
+                }
             }
         }
+        
     }
 }

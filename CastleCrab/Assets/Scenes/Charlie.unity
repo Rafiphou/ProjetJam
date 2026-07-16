@@ -1689,6 +1689,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
   waveInterval: 60
   waveDuration: 20
+  SpawnRate: 0
+  Spawners:
+  - {fileID: 7238555938326052006}
+  - {fileID: 1227150760}
+  - {fileID: 1785347953}
 --- !u!4 &1208387907
 Transform:
   m_ObjectHideFlags: 0
@@ -1719,7 +1724,7 @@ PrefabInstance:
     - target: {fileID: -6315375499639579353, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
       propertyPath: 'checkpoints.Array.data[0]'
       value: 
-      objectReference: {fileID: 307852221}
+      objectReference: {fileID: 307852222}
     - target: {fileID: 60744117210012789, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
       propertyPath: m_Name
       value: Middle Spawner
@@ -1769,6 +1774,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
+--- !u!1 &1227150760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 60744117210012789, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
+  m_PrefabInstance: {fileID: 1227150759}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1227150761 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2948067238440739044, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
@@ -3303,15 +3313,15 @@ PrefabInstance:
     - target: {fileID: -6315375499639579353, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
       propertyPath: 'checkpoints.Array.data[0]'
       value: 
-      objectReference: {fileID: 2053618219}
+      objectReference: {fileID: 2053618220}
     - target: {fileID: -6315375499639579353, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
       propertyPath: 'checkpoints.Array.data[1]'
       value: 
-      objectReference: {fileID: 673358530}
+      objectReference: {fileID: 673358531}
     - target: {fileID: -6315375499639579353, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
       propertyPath: 'checkpoints.Array.data[2]'
       value: 
-      objectReference: {fileID: 307852221}
+      objectReference: {fileID: 307852222}
     - target: {fileID: 60744117210012789, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
       propertyPath: m_Name
       value: Bottom Spawner
@@ -3361,6 +3371,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
+--- !u!1 &1785347953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 60744117210012789, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
+  m_PrefabInstance: {fileID: 1785347952}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1785347954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2948067238440739044, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
@@ -3897,15 +3912,15 @@ PrefabInstance:
     - target: {fileID: -6315375499639579353, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
       propertyPath: 'checkpoints.Array.data[0]'
       value: 
-      objectReference: {fileID: 1575286703}
+      objectReference: {fileID: 1575286704}
     - target: {fileID: -6315375499639579353, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
       propertyPath: 'checkpoints.Array.data[1]'
       value: 
-      objectReference: {fileID: 673358530}
+      objectReference: {fileID: 673358531}
     - target: {fileID: -6315375499639579353, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
       propertyPath: 'checkpoints.Array.data[2]'
       value: 
-      objectReference: {fileID: 307852221}
+      objectReference: {fileID: 307852222}
     - target: {fileID: 60744117210012789, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
       propertyPath: m_Name
       value: Top Spawner
@@ -3955,6 +3970,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
+--- !u!1 &7238555938326052006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 60744117210012789, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}
+  m_PrefabInstance: {fileID: 7238555938326052005}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7238555938326052007 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2948067238440739044, guid: 3d0be830d63c28c438f2d3a4cd1896a9, type: 3}

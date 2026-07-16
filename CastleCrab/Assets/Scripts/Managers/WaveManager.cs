@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class WaveManager : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class WaveManager : MonoBehaviour
     public float gameTime { get; private set; }
 
     public float waveTimer { get; private set; }
+
+    public float SpawnRate;
+    public List<GameObject> Spawners;
 
     private void Awake()
     {
@@ -37,5 +42,13 @@ public class WaveManager : MonoBehaviour
             isWaveActive = false;
             waveTimer = 0f;
         }
+
+
+    }
+
+    private void Start()
+    {
+        GameObject chosenSpawner = Spawners[Random.Range(0, Spawners.Count)];
+        chosenSpawner.GetComponent<Spawner>().SpawnEnemy();
     }
 }
