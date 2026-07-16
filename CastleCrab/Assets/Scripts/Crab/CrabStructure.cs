@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-
+using Random = UnityEngine.Random;
 
 
 public class CrabStructure : MonoBehaviour
@@ -24,6 +25,7 @@ public class CrabStructure : MonoBehaviour
     protected Transform target_;
 
     public RessourcePoint actual_point;
+    public List<TextMeshProUGUI> texts;
 
 
     public CrabStructure(int max_rss, int walking_speed, int attack, float attack_speed, float health,
@@ -183,11 +185,23 @@ public class CrabStructure : MonoBehaviour
         rss_carried.Clear();
     }
 
+    public void saySmallTalk()
+    {
+        int index_emote = Random.Range(0, 5);
+        TextMeshProUGUI text = texts[index_emote];
+        TextMeshProUGUI spawner_text = Instantiate(text, transform.position, Quaternion.identity);
+    }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Castle")
         {
             is_near_castle_ = true;
+        }
+
+        if (other.tag == "Crabe")
+        {
+            saySmallTalk();
         }
     }
 
@@ -196,6 +210,11 @@ public class CrabStructure : MonoBehaviour
         if (other.tag == "Castle")
         {
             is_near_castle_ = false;
+        }
+
+        if (other.tag == "Crabe")
+        {
+            //call to function 
         }
     }
 
