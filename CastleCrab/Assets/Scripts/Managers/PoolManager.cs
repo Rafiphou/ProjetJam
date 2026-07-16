@@ -65,6 +65,14 @@ public class PoolManager : MonoBehaviour
     public void ReturnToPool(GameObject enemyPrefab, GameObject instance)
     {
         instance.SetActive(false);
-        pools[enemyPrefab].Enqueue(instance);
+        if (pools.ContainsKey(enemyPrefab))
+        {
+            pools[enemyPrefab].Enqueue(instance);
+        }
+        else
+        {
+            Debug.LogWarning("Tentative de retour au pool avec un prefab inconnu :" + enemyPrefab.name);
+        }
+        
     }
 }

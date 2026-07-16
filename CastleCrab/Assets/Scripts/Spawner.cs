@@ -3,15 +3,17 @@ using System.Collections.Generic;
 
 public class Spawner : MonoBehaviour
 {
-    public List<GameObject> checkpoints;
+    public List<Transform> checkpoints;
+    public List<GameObject> possiblePrefabs;
     
     public void SpawnEnemy()
     {
+        
         //GameObject obj = PoolManager.Instance.GetFromPool(prefabChoisi, transform.position, Quaternion.identity);
         //if (obj != null)
         {
             //Enemy enemy = obj.GetComponent<Enemy>();
-            //enemy.originPrefab = prefabChoisi;
+            //enemy.originalPrefab = prefabChoisi;
             //enemy.SetRoute(checkpoints); // la liste de Transform de CE spawner
         }
     }
