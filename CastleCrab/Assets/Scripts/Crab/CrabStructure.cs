@@ -21,11 +21,14 @@ public class CrabStructure : MonoBehaviour
     protected bool is_triggered_;
 
     protected bool is_near_castle_;
+    protected bool is_on_way_back_;
     
     protected Transform target_;
 
     public RessourcePoint actual_point;
-    public List<TextMeshProUGUI> texts;
+    public List<TextMeshProUGUI> talk_texts;
+    public List<TextMeshProUGUI> think_texts_;
+    public GameObject castle;
 
 
     public CrabStructure(int max_rss, int walking_speed, int attack, float attack_speed, float health,
@@ -44,6 +47,7 @@ public class CrabStructure : MonoBehaviour
         is_triggered_ = false;
         target_ = null;
         is_near_castle_ = true;
+        is_on_way_back_ = false;
     }
 
     public List<RessourceType> getRssCarried()
@@ -164,11 +168,13 @@ public class CrabStructure : MonoBehaviour
         {
             if (!is_near_castle_)
             {
-                //target = castle
+                target_ = castle.transform;
+                is_on_way_back_ = true;
             }
             else
             {
                 target_ = null;
+                is_on_way_back_ = false;
             }
             
         }
@@ -176,7 +182,10 @@ public class CrabStructure : MonoBehaviour
 
     public void trigger()
     {
-        is_triggered_ = true;
+        if (!is_on_way_back_)
+        {
+            is_triggered_ = true;
+        }
     }
 
     public void giveRessources()
@@ -188,10 +197,16 @@ public class CrabStructure : MonoBehaviour
     public void saySmallTalk()
     {
         int index_emote = Random.Range(0, 5);
-        TextMeshProUGUI text = texts[index_emote];
+        TextMeshProUGUI text = talk_texts[index_emote];
         TextMeshProUGUI spawner_text = Instantiate(text, transform.position, Quaternion.identity);
     }
 
+    public void sayThought()
+    {
+        int index_emote = Random.Range(0, 5);
+        TextMeshProUGUI text = think_texts_[index_emote];
+        TextMeshProUGUI spawner_text = Instantiate(text, transform.position, Quaternion.identity);
+    }
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Castle")
@@ -201,7 +216,11 @@ public class CrabStructure : MonoBehaviour
 
         if (other.tag == "Crabe")
         {
-            saySmallTalk();
+            if (Vector3.Distance(transform.position, castle.transform.position) <
+                Vector3.Distance(other.transform.position, castle.transform.position))
+            {
+                saySmallTalk();
+            }
         }
     }
 
@@ -214,17 +233,16 @@ public class CrabStructure : MonoBehaviour
 
         if (other.tag == "Crabe")
         {
-            //call to function 
+            if (Vector3.Distance(transform.position, castle.transform.position) <
+                Vector3.Distance(other.transform.position, castle.transform.position))
+            {
+                sayThought();
+            }
         }
     }
 
     public void Update()
     {
-        if (is_triggered_)
-        {
-            //wait next target
-        }
-
         if (target_ != null)
         {
             moveToTarget();
