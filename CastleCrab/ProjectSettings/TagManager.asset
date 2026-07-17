@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Defense Point
   - Castle
+  - Barrier
   layers:
   - Default
   - TransparentFX

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Barrier : MonoBehaviour
@@ -5,6 +6,10 @@ public class Barrier : MonoBehaviour
     public bool isPlacingBarrier = false;
 
     private Vector3 offset = new Vector3(1f, 1f, 0f); // Offset to position the barrier slightly above the mouse cursor
+
+    private int healthPoints = 100; // Example health points for the barrier
+
+    public GameObject originalPrefab; // Reference to the original prefab for pooling
 
     private void OnEnable()
     {
@@ -32,7 +37,6 @@ public class Barrier : MonoBehaviour
     {
         if (isPlacingBarrier && BarrierPlacementManager.Instance.isOverPlacementArea)
         {
-            Debug.Log("Barrier placed at: " + BarrierPlacementManager.Instance.overBarrier.position);
             isPlacingBarrier = false;
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             Color c = sr.color;
@@ -40,5 +44,24 @@ public class Barrier : MonoBehaviour
             sr.color = c;
             transform.position = BarrierPlacementManager.Instance.overBarrier.position;
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        healthPoints -= damage;
+        if (healthPoints <= 0)
+        {
+            StartCoroutine(DestroyRoutine());
+        }
+        Debug.Log("Aieu! Barrier took damage. Current health: " + healthPoints);
+    }
+
+    private IEnumerator DestroyRoutine()
+    {
+        // Play any destruction animation or effects here
+
+        yield return new WaitForSeconds(1f); // Wait for any death animation or effects
+
+        BarrierPoolManager.Instance.ReturnToBarrierPool(originalPrefab, gameObject);
     }
 }
